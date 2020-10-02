@@ -32,7 +32,10 @@ class kite_string{
   
   void display(){
     noFill();
+    pushMatrix();
+    rotate(radians(kiteAngle));
     bezier(x1,y1,x2,y2,x3,y3,x4,y4);
+    popMatrix();
     
     //new kite(180,100, 230,120, 220,180, 160,140);
     //bezier(220, 180, 260, 220, 200, 330, 320, 350);

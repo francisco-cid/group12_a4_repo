@@ -22,19 +22,22 @@ class kid{
   }
   
   void display(){
+    //head
     strokeWeight(1);
     stroke (stro);
     fill (fl);
     ellipseMode(CENTER);
-    ellipse(x,y-30,25,25);
+    ellipse(x,y-46,35,35);
     
     rectMode(CENTER);
     stroke (stro);
     fill (bl);
     strokeWeight(1);
-    rect(x,y+3,20,40);
+    //body
+    rect(x,y+3,40,60);
     fill (or);
-    rect(x,y+43,15,40);
+    //leg
+    rect(x,y+53,15,40);
     
     leftarm();
   }
@@ -47,7 +50,7 @@ class kid{
     pushMatrix();
     translate(x-10, y);
     rotate(radians(armAngle));
-    rect(0,0,30,10);
+    rect(0,0,48,12);
     popMatrix();
   }
 }
