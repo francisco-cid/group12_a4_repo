@@ -1,24 +1,30 @@
-class kid{
-  float x;
-  float y;
-  float stro;
-  color fl;
-  color or;
-  color bl;
+class Kid{
+  float x, y, stro, armAngle, angleChange, speed;
+  final int ANGLE_LIMIT;
+  color fl, or, bl;
   
-  kid (){
+  Kid(){
     x=0;
     y=0;
     stro = 0;
+    speed = 0;
+    armAngle = 0;
+    angleChange = 0.45;
+    ANGLE_LIMIT = 9;
   }
   
-  kid(float x, float y, float stro, color fl, color or, color bl){
+  Kid(float x, float y, float stro, float armAngle, float angleChange, final int ANGLE_LIMIT, color fl, color or, color bl, float speed){
     this.x =x;
     this.y=y;
     this.stro = stro;
+    this.armAngle = armAngle;
+    this.angleChange = angleChange;
+    this.ANGLE_LIMIT = ANGLE_LIMIT;
     this.fl = fl;
     this.or = or;
     this.bl = bl;
+    this.speed = speed;
+    
   }
   
   void display(){
@@ -55,7 +61,18 @@ class kid{
   }
   
  void move() {
-    x = x - 1;
+    this.x -= this.speed;
+    if (this.x < -20){
+      this.x = width + 195;
+    }
+    //move arm
+    armAngle += angleChange;
+    if (armAngle > ANGLE_LIMIT || armAngle < 0){
+    angleChange = -angleChange;
+    armAngle += angleChange;
+    }
+    
+    
   
   }
 }

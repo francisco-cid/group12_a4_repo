@@ -46,11 +46,6 @@ void draw(){
   //move bicycle
   bicycle.move();
   
-  
- 
-  
-  
-  
   //display bird
   bird.display();
   //move bird

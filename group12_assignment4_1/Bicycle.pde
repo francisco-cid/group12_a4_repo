@@ -9,6 +9,7 @@ class Bicycle {
     y = 350; 
     speed = 5;
     spoke_start = 0;
+    ped_a = 15;
   }
   
   //constructor 
@@ -21,7 +22,6 @@ class Bicycle {
   }
   
   void display(){
-    color[] colors = {color(183,237,237), color(237, 183, 183), color(147, 82, 24)};
     rectMode(CENTER);
   //DRAWING A BIKE
     stroke(4);
@@ -83,7 +83,6 @@ class Bicycle {
     rect(ped_x + ped_len*cos(radians(ped_a + 180)), ped_y + ped_len*sin(radians(ped_a + 180)), 6, 2);
     noFill();
     //seat 
-    stroke(colors[2]);
     strokeWeight(6);
     line(x + 46, y - 102, x + 66, y - 98);
     //handlebars 

@@ -1,49 +1,76 @@
-class kite{
-  float x1;
-  float y1;
-  float x2;
-  float y2;
-  float x3;
-  float y3;
-  
-  
-  kite(){
-    x1 =0;
-    y1 =0;
-    x2 =0;
-    y2 =0;
-    x3 =0;
-    y3 =0;
-    
+class Kite {
+  //kite variables
+  float x, y, kiteAngle, kiteChange, speed;
+  final int KITE_ANGLE_LIMIT;
+  //string variables 
+  float sx, sy; 
+
+
+
+  Kite() {
+    x = 0;
+    x =0;
+
+    kiteAngle = 0; 
+    kiteChange = 0.08;
+    KITE_ANGLE_LIMIT = 2;
+
+    sx = 0;
+    sy =0;
   }
-  
-  kite(float x1, float y1,float x2, float y2,float x3, float y3){
-    this.x1 =x1;
-    this.y1 =y1;
-    this.x2 =x2;
-    this.y2 =y2;
-    this.x3 =x3;
-    this.y3 =y3;
+
+  Kite(float x, float y, float sx, float sy, float kiteAngle, float kiteChange, final int KITE_ANGLE_LIMIT, float speed) {
+    this.x =x;
+    this.y =y;
+
+    this.kiteAngle = kiteAngle;
+    this.kiteChange = kiteChange;
+    this.KITE_ANGLE_LIMIT = KITE_ANGLE_LIMIT;
+
+    this.sx = sx; 
+    this.sy = sy;
     
+    this.speed = speed;
   }
-  
-  void display(){
-    //220,180(pivot point) 3
+
+  void display() {
+    //kite
     stroke(0);
-    fill (158,45,193);
+    fill (158, 45, 193);
     pushMatrix();
     rotate(radians(kiteAngle));
-    triangle(x1,y1,x2,y2,x3,y3);
-    triangle(x1,y1,x2,y2,x3-30,y3/2);
+    triangle(x, y, x + 130, y - 20, x + 50, y + 40);
+    triangle(x, y, x + 130, y - 20, x + 20, ((y + 40)/2));
+    popMatrix();
+
+    //string 
+    noFill();
+    stroke(0);
+    pushMatrix();
+    rotate(radians(kiteAngle));
+    bezier(sx, sy, sx + 60, sy + 40, sx - 20, sy + 150, sx + 105, sy + 170);
     popMatrix();
   } 
-  
+
   void move() {
-   
-    x1 = x1 - 1;
-    x2 = x2 - 1;
-    x3 = x3 - 1;
-  
-   
-}
+
+    //kite
+    this.x -= this.speed;
+    if (this.x < -195){
+      this.x = width + 20;
+    }
+
+    //string
+    this.sx -= this.speed;
+    if (this.sx < -145){
+      this.sx = width + 70;
+    }
+
+    //rotates kite and string
+    kiteAngle += kiteChange;
+    if (kiteAngle > KITE_ANGLE_LIMIT || kiteAngle < 0) {
+      kiteChange = -kiteChange;
+      kiteAngle += kiteChange;
+    }
+  }
 }

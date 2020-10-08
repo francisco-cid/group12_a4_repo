@@ -1,29 +1,27 @@
-class bird {
-  float x;
-  float y;
-  float speed;
+class Bird {
+  float x, y, speed;
   float wing = y - 15;
   
-  bird () {
+  Bird () {
     x = 0;
     y = 0;
     speed = 1;
   }
   
-  bird (float x, float y,float speed, float wing) {
+  Bird (float x, float y, float wing, float speed) {
     this.x = x;
     this.y = y;
-    this.speed = speed;
     this.wing = wing;
+    this.speed = speed;
   }
   
   void display() {
     // Slows down the rate of flapping
     if((frameCount / 15)% 2 == 0) {
-    b1.wing = b1.y - 15;
+    this.wing = this.y - 15;
     }
     else{
-      b1.wing = b1.y + 15;
+      this.wing = this.y + 15;
     }  
     
     fill (203,45,45);
@@ -49,7 +47,10 @@ class bird {
   } 
   
   void move() {
-    x = x + speed;
+    this.x -= this.speed; 
+    if (this.x < -25){
+      this.x = width + 25;
+    }
     
   }
 }
