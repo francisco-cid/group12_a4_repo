@@ -37,7 +37,7 @@ class Kid{
     
     rectMode(CENTER);
     stroke (stro);
-    fill (bl);
+    fill (255);
     strokeWeight(1);
     //body
     rect(x,y+3,40,60);
